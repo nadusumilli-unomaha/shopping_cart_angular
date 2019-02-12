@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "core-data": [
+        "dist/core-data"
+      ],
+      "core-data/*": [
+        "dist/core-data/*"
+      ]
+    }
   }
 }
