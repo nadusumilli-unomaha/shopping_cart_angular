@@ -1,3 +1,13 @@
 <div class="container">
-    <app-shopping-list [products]="$products"></app-shopping-list>
+    <div class="row">
+        <div class="shopping-filters">
+            <app-shopping-filters
+                (filterByPrice)="filterByPrice($event)"
+                (filterBySize)="filterBySize($event)"
+            ></app-shopping-filters>
+        </div>
+        <div class="shopping-list">
+            <app-shopping-list [products]="$products"></app-shopping-list>
+        </div>
+    </div>
 </div>

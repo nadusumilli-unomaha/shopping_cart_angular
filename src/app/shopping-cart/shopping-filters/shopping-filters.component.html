@@ -1,0 +1,52 @@
+<div class="shopping-filters">
+    <div class="filters-orderBy">
+        <select class="input-control" (change)="filterByPrice.emit($event)">
+            <option value="None">Select a price filter</option>
+            <option value="high_to_low">high to low</option>
+            <option value="low_to_high">low to high</option>
+        </select>
+    </div>
+
+    <div class="filters-size">
+        <button
+            class="button"
+            [class.active]="isSize('S')"
+            value="S"
+            (click)="sizeSelected($event)"
+        >
+            S
+        </button>
+        <button
+            class="button"
+            [class.active]="isSize('XS')"
+            value="XS"
+            (click)="sizeSelected($event)"
+        >
+            XS
+        </button>
+        <button
+            class="button"
+            [class.active]="isSize('M')"
+            value="M"
+            (click)="sizeSelected($event)"
+        >
+            M
+        </button>
+        <button
+            class="button"
+            [class.active]="isSize('L')"
+            value="L"
+            (click)="sizeSelected($event)"
+        >
+            L
+        </button>
+        <button
+            class="button"
+            [class.active]="isSize('XL')"
+            value="XL"
+            (click)="sizeSelected($event)"
+        >
+            XL
+        </button>
+    </div>
+</div>

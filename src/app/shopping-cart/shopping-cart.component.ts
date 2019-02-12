@@ -20,4 +20,24 @@ export class ShoppingCartComponent implements OnInit {
     ngOnInit() {
         this.getproducts();
     }
+
+    filterByPrice(event) {
+        let filterValue = event.target.value;
+        if (filterValue === "low_to_high") {
+            this.$products.sort((a, b) => a.price - b.price);
+        } else if (filterValue === "high_to_low") {
+            this.$products.sort((a, b) => a.price - b.price);
+            this.$products.reverse();
+        }
+    }
+
+    filterBySize(filter) {
+        this.productService.all().subscribe(products => {
+            if (filter === "") this.$products = products;
+            else
+                this.$products = products.filter(product =>
+                    product.availableSizes.includes(filter)
+                );
+        });
+    }
 }
