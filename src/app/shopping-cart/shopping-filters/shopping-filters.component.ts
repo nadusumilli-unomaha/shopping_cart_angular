@@ -15,7 +15,6 @@ export class ShoppingFiltersComponent implements OnInit {
     ngOnInit() {}
 
     sizeSelected(event) {
-        console.log(event.target.value);
         this.selectedSize =
             this.selectedSize === event.target.value ? "" : event.target.value;
         this.filterBySize.emit(this.selectedSize);

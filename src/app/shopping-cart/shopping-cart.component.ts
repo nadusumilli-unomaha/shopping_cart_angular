@@ -2,6 +2,7 @@ import { ProductsService } from "./../services/products/products.service";
 import { Component, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { Product } from "../services/products/product";
+import { CartService } from "../services/carts/cart.service";
 
 @Component({
     selector: "app-shopping-cart",
@@ -10,15 +11,37 @@ import { Product } from "../services/products/product";
 })
 export class ShoppingCartComponent implements OnInit {
     $products;
-    getproducts() {
+    $cart;
+    getProducts() {
         this.productService
             .all()
             .subscribe(products => (this.$products = products));
     }
-    constructor(private productService: ProductsService) {}
+
+    getCart() {
+        this.cartService.all().subscribe(cart => (this.$cart = cart));
+    }
+
+    deleteCart() {
+        this.cartService.all().subscribe(cart => (this.$cart = cart));
+    }
+
+    updateCart(item) {
+        this.cartService.udpate(item).subscribe(cart => (this.$cart = cart));
+    }
+
+    createCart(item) {
+        this.cartService.udpate(item).subscribe(cart => (this.$cart = cart));
+    }
+
+    constructor(
+        private productService: ProductsService,
+        private cartService: CartService
+    ) {}
 
     ngOnInit() {
-        this.getproducts();
+        this.getProducts();
+        this.getCart();
     }
 
     filterByPrice(event) {
@@ -32,12 +55,11 @@ export class ShoppingCartComponent implements OnInit {
     }
 
     filterBySize(filter) {
-        this.productService.all().subscribe(products => {
-            if (filter === "") this.$products = products;
-            else
-                this.$products = products.filter(product =>
-                    product.availableSizes.includes(filter)
-                );
-        });
+        if (filter === "") this.getProducts();
+        else {
+            this.$products = this.$products.filter(product =>
+                product.availableSizes.includes(filter)
+            );
+        }
     }
 }

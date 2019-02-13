@@ -8,7 +8,9 @@
             <div class="product-cost">
                 <strong>{{ product.price }}</strong> $
             </div>
-            <button class="btn btn-primary">Add to cart</button>
+            <button class="btn btn-primary" (click)="addToCart(product)">
+                Add to cart
+            </button>
         </div>
     </div>
 </div>
