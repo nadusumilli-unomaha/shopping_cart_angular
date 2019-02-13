@@ -14,7 +14,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/12064273040195392_1.jpg"
         },
-
         {
             "id": 13,
             "sku": 51498472915966370,
@@ -29,7 +28,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/51498472915966370_1.jpg"
         },
-
         {
             "id": 14,
             "sku": 10686354557628304,
@@ -37,14 +35,13 @@
             "description": "GPX Poly 1",
             "availableSizes": ["X", "L", "XL"],
             "style": "Front tie dye print",
-            "price": 9.0,
+            "price": 9,
             "installments": 3,
             "currencyId": "USD",
             "currencyFormat": "$",
             "isFreeShipping": true,
             "image": "../assets/images/products/10686354557628304_1.jpg"
         },
-
         {
             "id": 15,
             "sku": 11033926921508488,
@@ -52,14 +49,13 @@
             "description": "Treino 2014",
             "availableSizes": ["X", "L", "XL", "XXL"],
             "style": "Black T-Shirt with front print",
-            "price": 14.0,
+            "price": 14,
             "installments": 5,
             "currencyId": "USD",
             "currencyFormat": "$",
             "isFreeShipping": true,
             "image": "../assets/images/products/11033926921508488_1.jpg"
         },
-
         {
             "id": 11,
             "sku": 39876704341265610,
@@ -74,7 +70,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/39876704341265610_1.jpg"
         },
-
         {
             "id": 16,
             "sku": 10412368723880252,
@@ -82,14 +77,13 @@
             "description": "",
             "availableSizes": ["XS", "X", "L", "ML", "XL"],
             "style": "Grey",
-            "price": 75.0,
+            "price": 75,
             "installments": 5,
             "currencyId": "USD",
             "currencyFormat": "$",
             "isFreeShipping": true,
             "image": "../assets/images/products/10412368723880252_1.jpg"
         },
-
         {
             "id": 0,
             "sku": 8552515751438644,
@@ -104,7 +98,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/8552515751438644_1.jpg"
         },
-
         {
             "id": 1,
             "sku": 18644119330491310,
@@ -119,7 +112,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/18644119330491310_1.jpg"
         },
-
         {
             "id": 2,
             "sku": 11854078013954528,
@@ -134,7 +126,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/11854078013954528_1.jpg"
         },
-
         {
             "id": 3,
             "sku": 876661122392077,
@@ -149,7 +140,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/876661122392077_1.jpg"
         },
-
         {
             "id": 4,
             "sku": 9197907543445676,
@@ -164,7 +154,6 @@
             "isFreeShipping": false,
             "image": "../assets/images/products/9197907543445676_1.jpg"
         },
-
         {
             "id": 5,
             "sku": 10547961582846888,
@@ -179,7 +168,6 @@
             "isFreeShipping": false,
             "image": "../assets/images/products/10547961582846888_1.jpg"
         },
-
         {
             "id": 6,
             "sku": 6090484789343891,
@@ -194,7 +182,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/6090484789343891_1.jpg"
         },
-
         {
             "id": 7,
             "sku": 18532669286405344,
@@ -209,7 +196,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/18532669286405344_1.jpg"
         },
-
         {
             "id": 8,
             "sku": 5619496040738316,
@@ -224,7 +210,6 @@
             "isFreeShipping": false,
             "image": "../assets/images/products/5619496040738316_1.jpg"
         },
-
         {
             "id": 9,
             "sku": 11600983276356164,
@@ -239,7 +224,6 @@
             "isFreeShipping": true,
             "image": "../assets/images/products/11600983276356164_1.jpg"
         },
-
         {
             "id": 10,
             "sku": 27250082398145996,
@@ -247,7 +231,7 @@
             "description": "",
             "availableSizes": ["L", "XL"],
             "style": "",
-            "price": 49.0,
+            "price": 49,
             "installments": 9,
             "currencyId": "USD",
             "currencyFormat": "$",
@@ -256,10 +240,23 @@
         }
     ],
     "cart": {
-        "items": [],
-        "total": 0,
-        "tax": 0.065,
-        "cart_sub_total": 0,
+        "items": [
+            {
+                "id": 12,
+                "price": 10.9,
+                "title": "Cat Tee Black T-Shirt",
+                "image": "../assets/images/products/12064273040195392_1.jpg",
+                "quantity": 1
+            },
+            {
+                "id": 13,
+                "price": 29.45,
+                "title": "Dark Thug Blue-Navy T-Shirt",
+                "image": "../assets/images/products/51498472915966370_1.jpg",
+                "quantity": 1
+            }
+        ],
+        "cart_sub_total": 51.25,
         "checkout": false
     }
 }
