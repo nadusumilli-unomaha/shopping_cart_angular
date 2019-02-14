@@ -14,13 +14,13 @@ export class ShoppingFiltersComponent implements OnInit {
 
     ngOnInit() {}
 
-    sizeSelected(event) {
+    sizeSelected(event): void {
         this.selectedSize =
             this.selectedSize === event.target.value ? "" : event.target.value;
         this.filterBySize.emit(this.selectedSize);
     }
 
-    isSize(value) {
+    isSize(value: string): boolean {
         if (this.selectedSize === value) return true;
         else return false;
     }

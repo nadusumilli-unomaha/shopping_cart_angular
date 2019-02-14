@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Cart } from "./cart";
 
 const BASE_URL = "http://localhost:3000/";
 
@@ -10,23 +12,23 @@ export class CartService {
     model = "cart";
     constructor(private httpClient: HttpClient) {}
 
-    getUrl() {
+    getUrl(): string {
         return `${BASE_URL}${this.model}`;
     }
 
-    all() {
-        return this.httpClient.get(this.getUrl());
+    all(): Observable<Cart> {
+        return this.httpClient.get<Cart>(this.getUrl());
     }
 
-    create(item) {
-        return this.httpClient.post(this.getUrl(), item);
+    create(item): Observable<Cart> {
+        return this.httpClient.post<Cart>(this.getUrl(), item);
     }
 
-    udpate(item) {
-        return this.httpClient.patch(this.getUrl(), item);
+    udpate(item): Observable<Cart> {
+        return this.httpClient.patch<Cart>(this.getUrl(), item);
     }
 
-    delete() {
-        return this.httpClient.delete(this.getUrl());
+    delete(): Observable<Cart> {
+        return this.httpClient.delete<Cart>(this.getUrl());
     }
 }

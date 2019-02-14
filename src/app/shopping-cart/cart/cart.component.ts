@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { CartService } from "../../services/carts/cart.service";
-import { Cart } from "../../services/carts/cart";
+import { Cart } from "../../services";
 
 @Component({
     selector: "app-cart",
@@ -12,15 +11,15 @@ export class CartComponent implements OnInit {
     @Output() deletedCartItem = new EventEmitter();
     @Output() updatedCartItem = new EventEmitter();
     @Output() cartCleared = new EventEmitter();
-    constructor(private cartService: CartService) {}
+    constructor() {}
 
     ngOnInit() {}
 
-    openCart() {
+    openCart(): void {
         document.getElementById("cart").style.width = "300px";
     }
 
-    closeCart() {
+    closeCart(): void {
         document.getElementById("cart").style.width = "0px";
     }
 }
