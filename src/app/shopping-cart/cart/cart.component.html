@@ -1,5 +1,7 @@
 <div>
-    <div *ngIf="cart" class="cart-number">{{ cart.totalQuantity }}</div>
+    <div *ngIf="cart && cart.totalQuantity > 0" class="cart-number">
+        {{ cart.totalQuantity }}
+    </div>
     <span class="cart-btn" (click)="openCart()">
         <i class="fas fa-shopping-cart"></i>
     </span>
@@ -9,7 +11,7 @@
     <span class="close-btn" (click)="closeCart()">
         <i class="fas fa-times"></i>
     </span>
-    <div *ngIf="cart; else elseBlock">
+    <div *ngIf="cart && cart.items[0]; else elseBlock">
         <div class="cart-body">
             <table>
                 <thead>
@@ -57,28 +59,42 @@
                         </td>
                         <td>
                             <div class="cart-total">
-                                {{ item.price * item.quantity }}$
+                                {{ (item.price * item.quantity).toFixed(2) }}$
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="cart-sub-total">{{ cart.cart_sub_total }}$</div>
+            <div class="cart-sub-total">
+                {{ cart.cart_sub_total.toFixed(2) }}$
+            </div>
             <div class="cart-btns">
                 <button class="clear-cart btn" (click)="cartCleared.emit()">
                     Clear Cart
                 </button>
-                <button class="checkout-cart btn">Checkout</button>
+                <button
+                    class="checkout-cart btn"
+                    (click)="showModal.emit(true)"
+                >
+                    Checkout
+                </button>
             </div>
         </div>
     </div>
     <ng-template #elseBlock>
         <div class="cart-body">
-            Cart is Empty
-            <div class="cart-sub-total">0dfsdf$</div>
+            <div class="cart-empty">
+                Cart is Empty
+            </div>
+            <div class="cart-sub-total">0$</div>
             <div class="cart-btns">
                 <button class="clear-cart btn">Clear Cart</button>
-                <button class="checkout-cart btn">Checkout</button>
+                <button
+                    class="checkout-cart btn"
+                    (click)="showModal.emit(true)"
+                >
+                    Checkout
+                </button>
             </div>
         </div>
     </ng-template>

@@ -11,6 +11,7 @@ export class CartComponent implements OnInit {
     @Output() deletedCartItem = new EventEmitter();
     @Output() updatedCartItem = new EventEmitter();
     @Output() cartCleared = new EventEmitter();
+    @Output() showModal = new EventEmitter();
     constructor() {}
 
     ngOnInit() {}
