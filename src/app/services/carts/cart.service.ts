@@ -19,8 +19,7 @@ export class CartService {
     }
 
     create(item) {
-        console.log(item);
-        return this.httpClient.post(this.getUrl(), item).toPromise();
+        return this.httpClient.post(this.getUrl(), item);
     }
 
     udpate(item) {
