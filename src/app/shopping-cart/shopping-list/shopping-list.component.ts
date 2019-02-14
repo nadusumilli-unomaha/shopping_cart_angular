@@ -9,7 +9,7 @@ import { CartService } from "../../services/carts/cart.service";
 })
 export class ShoppingListComponent implements OnInit {
     @Input() products: Product[];
-    @Output() createdItem = new EventEmitter();
+    @Output() addedCartItem = new EventEmitter();
     constructor(private cartService: CartService) {}
 
     ngOnInit() {}
@@ -22,6 +22,6 @@ export class ShoppingListComponent implements OnInit {
             image: item.image,
             quantity: 1
         };
-        this.createdItem.emit(cart_item);
+        this.addedCartItem.emit(cart_item);
     }
 }
