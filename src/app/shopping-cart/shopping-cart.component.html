@@ -1,4 +1,9 @@
-<app-cart [cart]="$cart"></app-cart>
+<app-cart
+    [cart]="$cart"
+    (updatedCartItem)="updateCartItem($event)"
+    (deletedCartItem)="deleteCartItem($event)"
+    (cartCleared)="clearCart($event)"
+></app-cart>
 <div class="container">
     <div class="row">
         <div class="shopping-filters">
@@ -8,7 +13,10 @@
             ></app-shopping-filters>
         </div>
         <div class="shopping-list">
-            <app-shopping-list [products]="$products"></app-shopping-list>
+            <app-shopping-list
+                [products]="$products"
+                (addedCartItem)="addCartItem($event)"
+            ></app-shopping-list>
         </div>
     </div>
 </div>

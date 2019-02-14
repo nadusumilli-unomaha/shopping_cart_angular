@@ -22,16 +22,31 @@ export class ShoppingCartComponent implements OnInit {
         this.cartService.all().subscribe(cart => (this.$cart = cart));
     }
 
-    deleteCart() {
-        this.cartService.all().subscribe(cart => (this.$cart = cart));
+    clearCart() {
+        this.cartService.delete().subscribe(cart => (this.$cart = cart));
     }
 
-    updateCart(item) {
-        this.cartService.udpate(item).subscribe(cart => (this.$cart = cart));
+    deleteCartItem(item) {
+        this.cartService
+            .udpate({ item, remove: true })
+            .subscribe(cart => (this.$cart = cart));
     }
 
-    createCart(item) {
-        this.cartService.udpate(item).subscribe(cart => (this.$cart = cart));
+    updateCartItem(item) {
+        this.cartService
+            .udpate({ item, remove: false })
+            .subscribe(cart => (this.$cart = cart));
+    }
+
+    addCartItem(item) {
+        if (this.$cart.items.findIndex(Fitem => Fitem.id === item.id) === -1)
+            this.cartService
+                .create(item)
+                .subscribe(cart => (this.$cart = cart));
+        else
+            this.cartService
+                .udpate({ item, remove: false })
+                .subscribe(cart => (this.$cart = cart));
     }
 
     constructor(
