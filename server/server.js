@@ -26,8 +26,8 @@ server.delete("/cart", (req, res) => {
     res.jsonp(generaldb.cart);
 });
 
-// Post items to cart.
 server.use(jsonServer.bodyParser);
+// Post items to cart.
 server.post("/cart", (req, res) => {
     try {
         const item = req.body;
@@ -41,6 +41,7 @@ server.post("/cart", (req, res) => {
     res.jsonp(generaldb.cart);
 });
 
+// update and delete items from the cart.
 server.patch("/cart", (req, res) => {
     const { item, remove } = req.body;
     try {
@@ -59,7 +60,6 @@ server.patch("/cart", (req, res) => {
                 Fitem => Fitem.id === item.id
             );
             if (itemIndx >= 0) {
-                console.log(generaldb.cart.items[itemIndx].quantity);
                 if (generaldb.cart.items[itemIndx].quantity <= 1) {
                     generaldb.cart.items.splice(itemIndx, 1);
                     generaldb.cart.cart_sub_total -= item.price;

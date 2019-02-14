@@ -22,6 +22,12 @@ export class OrderComponent implements OnInit {
 
     ngOnInit() {}
 
+    /** Function: ngOnChanges
+     *  Arguments: None
+     *  Defenition:
+     *      On show true, show the checkout modal.
+     *  Returns: None
+     **/
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.show && changes.show.currentValue === true) {
             document.getElementById("cart").style.width = "0px";

@@ -16,10 +16,24 @@ export class CartComponent implements OnInit {
 
     ngOnInit() {}
 
+    /** Function: openCart
+     *  Arguments: None
+     *  Defenition:
+     *      Opening the cart by adding width to element
+     *      on click.
+     *  Returns: None
+     **/
     openCart(): void {
         document.getElementById("cart").style.width = "300px";
     }
 
+    /** Function: openCart
+     *  Arguments: None
+     *  Defenition:
+     *      Opening the cart by removing width to element
+     *      on click.
+     *  Returns: None
+     **/
     closeCart(): void {
         document.getElementById("cart").style.width = "0px";
     }
