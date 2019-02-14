@@ -1,4 +1,4 @@
-// Interface for the angular app.
+// Product Interface for the angular app.
 export interface Product {
     id: number;
     sku: number;

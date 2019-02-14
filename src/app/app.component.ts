@@ -6,5 +6,6 @@ import { Component } from "@angular/core";
     styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
+    // Title for the app.
     title: string = "angular-shopping-cart";
 }

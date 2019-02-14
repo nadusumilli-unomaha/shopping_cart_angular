@@ -13,12 +13,19 @@ export class ShoppingListComponent implements OnInit {
 
     ngOnInit() {}
 
-    addToCart(item: Product): void {
+    /** Function: addToCart
+     *  Arguments: product - a product from the app.
+     *  Defenition:
+     *      Emits an event to the parent component with
+     *      an item to add to cart.
+     *  Returns: None
+     **/
+    addToCart(product: Product): void {
         let cart_item = {
-            id: item.id,
-            price: item.price,
-            title: item.title,
-            image: item.image,
+            id: product.id,
+            price: product.price,
+            title: product.title,
+            image: product.image,
             quantity: 1
         };
         this.addedCartItem.emit(cart_item);
