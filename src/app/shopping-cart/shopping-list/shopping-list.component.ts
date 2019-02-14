@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Product } from "src/app/services/products/product";
-import { CartService } from "../../services/carts/cart.service";
+import { Product } from "../../services";
 
 @Component({
     selector: "app-shopping-list",
@@ -10,11 +9,11 @@ import { CartService } from "../../services/carts/cart.service";
 export class ShoppingListComponent implements OnInit {
     @Input() products: Product[];
     @Output() addedCartItem = new EventEmitter();
-    constructor(private cartService: CartService) {}
+    constructor() {}
 
     ngOnInit() {}
 
-    addToCart(item) {
+    addToCart(item: Product): void {
         let cart_item = {
             id: item.id,
             price: item.price,

@@ -1,5 +1,6 @@
+import { Item } from "./Item";
 export interface Cart {
-    item: [];
+    items: Item[];
     cart_sub_total: number;
     checkout: boolean;
 }

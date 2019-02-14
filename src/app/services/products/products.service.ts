@@ -1,7 +1,11 @@
+import { Product } from "./product";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
+// Pointing to the local server.
 const BASE_URL = "http://localhost:3000/";
+
 @Injectable({
     providedIn: "root"
 })
@@ -9,27 +13,30 @@ export class ProductsService {
     model = "products";
     constructor(private httpClient: HttpClient) {}
 
-    getUrl() {
+    getUrl(): string {
         return `${BASE_URL}${this.model}`;
     }
 
-    getUrlWithId(id) {
+    getUrlWithId(id): string {
         return `${this.getUrl()}/${id}`;
     }
 
-    all() {
-        return this.httpClient.get(this.getUrl());
+    all(): Observable<Product[]> {
+        return this.httpClient.get<Product[]>(this.getUrl());
     }
 
-    create(product) {
-        return this.httpClient.post(this.getUrl(), product);
+    create(product): Observable<Product[]> {
+        return this.httpClient.post<Product[]>(this.getUrl(), product);
     }
 
-    udpate(product) {
-        return this.httpClient.patch(this.getUrlWithId(product.id), product);
+    udpate(product): Observable<Product[]> {
+        return this.httpClient.patch<Product[]>(
+            this.getUrlWithId(product.id),
+            product
+        );
     }
 
-    delete(productId) {
-        return this.httpClient.delete(this.getUrlWithId(productId));
+    delete(productId): Observable<Product[]> {
+        return this.httpClient.delete<Product[]>(this.getUrlWithId(productId));
     }
 }
