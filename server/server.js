@@ -33,6 +33,7 @@ server.post("/cart", (req, res) => {
         const item = req.body;
         generaldb.cart.items.push(item);
         generaldb.cart.cart_sub_total += item.price;
+        generaldb.cart.totalQuantity += 1;
         fs.writeFileSync("./server/db.json", JSON.stringify(generaldb));
     } catch (e) {
         console.log(e);
@@ -40,14 +41,40 @@ server.post("/cart", (req, res) => {
     res.jsonp(generaldb.cart);
 });
 
-server.put("/cart", (req, res) => {
-    const item = req.body;
-    let itemIndx = generaldb.cart.items.findIndex(
-        Fitem => (Fitem.id = item.id)
-    );
-    generaldb.cart.items[itemIndx].quantity += 1;
-    generaldb.cart.cart_sub_total += item.price;
-    fs.writeFileSync("./server/db.json", JSON.stringify(generaldb));
+server.patch("/cart", (req, res) => {
+    const { item, remove } = req.body;
+    try {
+        if (!remove) {
+            let itemIndx = generaldb.cart.items.findIndex(
+                Fitem => Fitem.id === item.id
+            );
+            if (itemIndx >= 0) {
+                generaldb.cart.items[itemIndx].quantity += 1;
+                generaldb.cart.totalQuantity += 1;
+                generaldb.cart.cart_sub_total += item.price;
+                fs.writeFileSync("./server/db.json", JSON.stringify(generaldb));
+            }
+        } else {
+            let itemIndx = generaldb.cart.items.findIndex(
+                Fitem => Fitem.id === item.id
+            );
+            if (itemIndx >= 0) {
+                console.log(generaldb.cart.items[itemIndx].quantity);
+                if (generaldb.cart.items[itemIndx].quantity <= 1) {
+                    generaldb.cart.items.splice(itemIndx, 1);
+                    generaldb.cart.cart_sub_total -= item.price;
+                    generaldb.cart.totalQuantity -= 1;
+                } else {
+                    generaldb.cart.items[itemIndx].quantity -= 1;
+                    generaldb.cart.totalQuantity -= 1;
+                    generaldb.cart.cart_sub_total -= item.price;
+                }
+                fs.writeFileSync("./server/db.json", JSON.stringify(generaldb));
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
     res.jsonp(generaldb.cart);
 });
 
@@ -60,7 +87,8 @@ function resetCart() {
     generaldb.cart = {
         items: [],
         cart_sub_total: 0,
-        checkout: false
+        checkout: false,
+        totalQuantity: 0
     };
     fs.writeFileSync("./server/db.json", JSON.stringify(generaldb));
 }
