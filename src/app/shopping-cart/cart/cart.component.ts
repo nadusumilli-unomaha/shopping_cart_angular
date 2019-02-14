@@ -9,8 +9,9 @@ import { Cart } from "../../services/carts/cart";
 })
 export class CartComponent implements OnInit {
     @Input() cart: Cart;
-    @Output() deleted = new EventEmitter();
-    @Output() updated = new EventEmitter();
+    @Output() deletedCartItem = new EventEmitter();
+    @Output() updatedCartItem = new EventEmitter();
+    @Output() cartCleared = new EventEmitter();
     constructor(private cartService: CartService) {}
 
     ngOnInit() {}

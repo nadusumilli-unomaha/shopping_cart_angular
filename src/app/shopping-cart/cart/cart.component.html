@@ -1,51 +1,85 @@
 <div>
+    <div *ngIf="cart" class="cart-number">{{ cart.totalQuantity }}</div>
     <span class="cart-btn" (click)="openCart()">
         <i class="fas fa-shopping-cart"></i>
     </span>
 </div>
 
 <div id="cart" class="cart">
-    <span class="closebtn" (click)="closeCart()">
+    <span class="close-btn" (click)="closeCart()">
         <i class="fas fa-times"></i>
     </span>
-    <div class="cart-body">
-        <table>
-            <tbody *ngFor="let item of cart.items">
-                <tr>
-                    <td>
-                        <img class="cart-image" src="{{ item.image }}" alt="" />
-                    </td>
-                    <td>
-                        <span class="cart-add">
-                            <i class="fas fa-minus"></i>
-                        </span>
-                    </td>
-                    <td>
-                        <input
-                            type="text"
-                            name="quantity"
-                            id="quantity"
-                            class="cart-quantity"
-                            value="{{ item.quantity }}"
-                        />
-                    </td>
-                    <td>
-                        <span class="cart-add">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                    </td>
-                    <td>
-                        <div class="cart-total">
-                            {{ item.price * item.quantity }}$
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="cart-sub-total">{{ cart.cart_sub_total }}$</div>
-        <div class="cart-btns">
-            <button class="clear-cart btn">Clear Cart</button>
-            <button class="checkout-cart btn">Checkout</button>
+    <div *ngIf="cart; else elseBlock">
+        <div class="cart-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>action</th>
+                        <th>quantity</th>
+                        <th>action</th>
+                        <th>total</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of cart.items">
+                    <tr>
+                        <td>
+                            <img
+                                class="cart-image"
+                                src="{{ item.image }}"
+                                alt=""
+                            />
+                        </td>
+                        <td>
+                            <span
+                                class="cart-remove"
+                                (click)="deletedCartItem.emit(item)"
+                            >
+                                <i class="fas fa-minus"></i>
+                            </span>
+                        </td>
+                        <td>
+                            <input
+                                type="text"
+                                name="quantity"
+                                id="quantity"
+                                class="cart-quantity"
+                                value="{{ item.quantity }}"
+                            />
+                        </td>
+                        <td>
+                            <span
+                                class="cart-add"
+                                (click)="updatedCartItem.emit(item)"
+                            >
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </td>
+                        <td>
+                            <div class="cart-total">
+                                {{ item.price * item.quantity }}$
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="cart-sub-total">{{ cart.cart_sub_total }}$</div>
+            <div class="cart-btns">
+                <button class="clear-cart btn" (click)="cartCleared.emit()">
+                    Clear Cart
+                </button>
+                <button class="checkout-cart btn">Checkout</button>
+            </div>
         </div>
     </div>
+    <ng-template #elseBlock>
+        <div class="cart-body">
+            Cart is Empty
+            <div class="cart-sub-total">0dfsdf$</div>
+            <div class="cart-btns">
+                <button class="clear-cart btn">Clear Cart</button>
+                <button class="checkout-cart btn">Checkout</button>
+            </div>
+        </div>
+    </ng-template>
 </div>
