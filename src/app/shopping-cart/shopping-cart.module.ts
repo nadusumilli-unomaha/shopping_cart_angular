@@ -7,13 +7,15 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShoppingFiltersComponent } from "./shopping-filters/shopping-filters.component";
 import { CartComponent } from "./cart/cart.component";
 import { CartService, ProductsService } from "../services";
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
     declarations: [
         ShoppingCartComponent,
         ShoppingListComponent,
         ShoppingFiltersComponent,
-        CartComponent
+        CartComponent,
+        OrderComponent
     ],
     imports: [CommonModule, ShoppingCartRoutingModule],
     providers: [CartService, ProductsService]

@@ -3,7 +3,13 @@
     (updatedCartItem)="updateCartItem($event)"
     (deletedCartItem)="deleteCartItem($event)"
     (cartCleared)="clearCart($event)"
+    (showModal)="onShowModal($event)"
 ></app-cart>
+<app-order
+    [cart]="$cart"
+    [show]="$showModal"
+    (hideModal)="onHideModal($event)"
+></app-order>
 <div class="container">
     <div class="row">
         <div class="shopping-filters">

@@ -9,6 +9,7 @@ import { CartService, ProductsService, Product, Cart, Item } from "../services";
 export class ShoppingCartComponent implements OnInit {
     $products: Product[];
     $cart: Cart;
+    $showModal: boolean = false;
 
     constructor(
         private productService: ProductsService,
@@ -18,6 +19,14 @@ export class ShoppingCartComponent implements OnInit {
     ngOnInit() {
         this.getProducts();
         this.getCart();
+    }
+
+    onShowModal(show) {
+        this.$showModal = true;
+    }
+
+    onHideModal(show) {
+        this.$showModal = false;
     }
 
     getProducts(): void {
