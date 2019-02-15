@@ -7,58 +7,71 @@
             <span class="close" (click)="hideModal.emit(false)">&times;</span>
         </div>
         <div class="modal-body">
-            <table *ngIf="cart && cart.items[0]; else elseBlock">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>action</th>
-                        <th>quantity</th>
-                        <th>action</th>
-                        <th>total</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let item of cart.items">
-                    <tr>
-                        <td>
-                            <img
-                                class="cart-image"
-                                src="{{ item.image }}"
-                                alt=""
-                            />
-                        </td>
-                        <td>
-                            <span
-                                class="cart-remove"
-                                (click)="deletedCartItem.emit(item)"
-                            >
-                                <i class="fas fa-minus"></i>
-                            </span>
-                        </td>
-                        <td>
-                            <input
-                                type="text"
-                                name="quantity"
-                                id="quantity"
-                                class="cart-quantity"
-                                value="{{ item.quantity }}"
-                            />
-                        </td>
-                        <td>
-                            <span
-                                class="cart-add"
-                                (click)="updatedCartItem.emit(item)"
-                            >
-                                <i class="fas fa-plus"></i>
-                            </span>
-                        </td>
-                        <td>
-                            <div class="cart-total">
-                                {{ (item.price * item.quantity).toFixed(2) }}$
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div *ngIf="cart && cart.items[0]; else elseBlock">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>action</th>
+                            <th>quantity</th>
+                            <th>action</th>
+                            <th>total</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let item of cart.items">
+                        <tr>
+                            <td>
+                                <div class="order-img-div">
+                                    <img
+                                        class="order-image"
+                                        src="{{ item.image }}"
+                                        alt=""
+                                    />
+                                    {{ item.title }}
+                                </div>
+                            </td>
+                            <td>
+                                <span
+                                    class="order-remove"
+                                    (click)="deletedCartItem.emit(item)"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </span>
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="quantity"
+                                    id="quantity"
+                                    class="order-quantity"
+                                    value="{{ item.quantity }}"
+                                />
+                            </td>
+                            <td>
+                                <span
+                                    class="order-add"
+                                    (click)="updatedCartItem.emit(item)"
+                                >
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </td>
+                            <td>
+                                <div class="order-total">
+                                    {{
+                                        (item.price * item.quantity).toFixed(2)
+                                    }}$
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="order-total">
+                    <div><strong>Total:</strong></div>
+                    <div class="order-price-total">
+                        {{ cart.cart_sub_total }}$
+                    </div>
+                </div>
+            </div>
             <ng-template #elseBlock>
                 Your cart is empty
             </ng-template>

@@ -52,9 +52,8 @@
 .close-btn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 25px;
-    margin-left: 50px;
+    right: 0.7em;
+    font-size: 1.5em;
     color: white;
     cursor: pointer;
     padding: 5px;
@@ -104,6 +103,15 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.cart-total {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+.cart-price-total {
+    margin-right: 1em;
+}
+
 .cart-add {
     cursor: pointer;
 }
@@ -143,4 +151,17 @@
     margin-top: 5em;
     margin-bottom: 3em;
     text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 3em;
+}
+
+th,
+td {
+    margin: 2px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }

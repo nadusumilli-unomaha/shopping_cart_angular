@@ -65,8 +65,11 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="cart-sub-total">
-                {{ cart.cart_sub_total.toFixed(2) }}$
+            <div class="cart-total">
+                <div><strong>Total:</strong></div>
+                <div class="cart-price-total">
+                    {{ cart.cart_sub_total.toFixed(2) }}$
+                </div>
             </div>
             <div class="cart-btns">
                 <button class="clear-cart btn" (click)="cartCleared.emit()">
@@ -86,7 +89,10 @@
             <div class="cart-empty">
                 Cart is Empty
             </div>
-            <div class="cart-sub-total">0$</div>
+            <div class="cart-total">
+                <div><strong>Total:</strong></div>
+                <div class="cart-price-total">{{ cart.cart_sub_total }}$</div>
+            </div>
             <div class="cart-btns">
                 <button class="clear-cart btn">Clear Cart</button>
                 <button
